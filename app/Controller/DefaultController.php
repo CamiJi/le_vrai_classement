@@ -50,8 +50,6 @@ class DefaultController extends Controller
 		// On cherche avec la méthode listeEquipe
 		$rencontresEquipes = $classementManager->rencontresEquipes();
 
-
-
 		foreach ($rencontresEquipes as $idRencontres => $rencontres) {
 
 			$id = $rencontres['id'];
@@ -290,14 +288,25 @@ class DefaultController extends Controller
 		}
 
 
-		// echo "<pre>";
-		// print_r($classement);
-		// echo "</pre>";
-		// die();
+		//On créer un tableau des rencontres trier par une clé Journée
+		$listeRencontresParJournee = [];
+
+		foreach ($rencontresEquipes as $key => $value) {
+
+			$id = $value['id'];
+			$Journee = $value['Journee'];
+
+			$listeRencontresParJournee[$Journee][$id] = $value;
+
+
+			// echo $journee;
+
+		}	
 
 		// On réaffiche notre page home en lui envoyant les données  des equipes choisit au hasard
-		$this->show('default/home',['classementEquipes' => $classement,
-									'rencontresEquipes' => $rencontresEquipes]);
+		$this->show('default/home',['classementEquipes'    => $classement,
+									'rencontresParJournee' => $listeRencontresParJournee,
+									'rencontresEquipes'    => $rencontresEquipes]);
 
 	}
 }
