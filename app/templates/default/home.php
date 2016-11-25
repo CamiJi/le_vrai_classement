@@ -51,31 +51,71 @@
   <p>** Ce vrai classement ne doit pas nous servir d'excuse pour ne pas faire renouveller notre licence dès juillet :)</p>
 </div>
 
-<div><h2>La liste des matchs :</h2></div>
 
-<div class="table-responsive">
-  <table class="table table-hover table-striped">
-      <thead>
-      <tr>
-        <th>Journée</th>
-        <th>Domicile</th>
-        <th colspan="2" class="text-center">Score</th>
-        <th class="text-right">Exterieur</th>
-      </tr>
-    </thead>
-    <tbody>
 
-     <?php foreach ($rencontresEquipes as $rencontres => $match): ?>
 
-        <tr>
-          <td>J<?php echo $match['Journee']; ?></td>
-          <td><?php echo $match['Nom_equipe_1']; ?></td>
-          <td class="text-right"><?php echo $match['Score_equipe_1']; ?></td>
-          <td class="text-left"><?php echo $match['Score_equipe_2']; ?></td>
-          <td class="text-right"><?php echo $match['Nom_equipe_2']; ?></td>
-        </tr>
 
-     <?php endforeach; ?>
-    </tbody>   
-  </table>
+ 
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <h3>La liste des matchs :</h3>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th>Journée</th>
+                <th>Domicile</th>
+                <th colspan="2" class="text-center">Score</th>
+                <th class="text-right">Exterieur</th>
+              </tr>
+            </thead>
+            <tbody>
+
+             <?php foreach ($rencontresEquipes as $rencontres => $match): ?>
+
+                <tr>
+                  <td>J<?php echo $match['Journee']; ?></td>
+                  <td><?php echo $match['Nom_equipe_1']; ?></td>
+                  <td class="text-right"><?php echo $match['Score_equipe_1']; ?></td>
+                  <td class="text-left"><?php echo $match['Score_equipe_2']; ?></td>
+                  <td class="text-right"><?php echo $match['Nom_equipe_2']; ?></td>
+                </tr>
+
+             <?php endforeach; ?>
+            </tbody>   
+          </table>
+        </div><!-- end TableResponsive -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php $this->stop('main_content') ?>
