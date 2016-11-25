@@ -99,9 +99,8 @@
           </div><!-- end TableResponsive -->
         </div>
       </div>
-
-    <?php endforeach; ?>
-  </div>
+    </div>
+  <?php endforeach; ?>
 </div>
 
 
