@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 25 Novembre 2016 à 14:52
+-- Généré le :  Ven 25 Novembre 2016 à 16:09
 -- Version du serveur :  10.1.10-MariaDB
 -- Version de PHP :  5.5.33
 
@@ -74,44 +74,45 @@ INSERT INTO `pe` (`id`, `Id_match`, `Pe`) VALUES
 
 CREATE TABLE `rencontres` (
   `id` int(11) NOT NULL,
-  `Equipe_1` int(11) NOT NULL,
-  `Equipe_2` int(11) NOT NULL,
+  `Id_equipe_1` int(11) NOT NULL,
+  `Id_equipe_2` int(11) NOT NULL,
   `Score_equipe_1` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Score_equipe_2` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL
+  `Score_equipe_2` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Journee` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `rencontres`
 --
 
-INSERT INTO `rencontres` (`id`, `Equipe_1`, `Equipe_2`, `Score_equipe_1`, `Score_equipe_2`) VALUES
-(2, 3, 6, '30', '27'),
-(3, 4, 5, '24', '18'),
-(4, 9, 8, '15', '26'),
-(5, 8, 1, '25', '22'),
-(6, 7, 4, '21', '21'),
-(7, 2, 6, '21', '12'),
-(8, 3, 7, '28', '26'),
-(9, 4, 8, '22', '20'),
-(10, 1, 9, '27', '23'),
-(11, 8, 3, '23', '26'),
-(12, 5, 3, '27', '31'),
-(13, 5, 6, '28', '25'),
-(14, 1, 2, '21', '28'),
-(15, 9, 4, '16', '33'),
-(16, 2, 5, '38', '21'),
-(17, 3, 9, '20', 'FO'),
-(18, 6, 7, '21', '21'),
-(19, 8, 6, '22', '32'),
-(20, 7, 5, '17', '32'),
-(21, 4, 2, '21', '29'),
-(22, 1, 3, '21', '21'),
-(23, 2, 7, '37', '19'),
-(24, 3, 4, '20', '25'),
-(25, 5, 8, '34', '19'),
-(26, 6, 9, '39', '15'),
-(27, 1, 7, '24', '15'),
-(28, 2, 9, '30', '15');
+INSERT INTO `rencontres` (`id`, `Id_equipe_1`, `Id_equipe_2`, `Score_equipe_1`, `Score_equipe_2`, `Journee`) VALUES
+(2, 3, 6, '30', '27', 1),
+(3, 4, 5, '24', '18', 1),
+(4, 9, 8, '15', '26', 1),
+(5, 8, 1, '25', '22', 2),
+(6, 7, 4, '21', '21', 2),
+(7, 2, 6, '21', '12', 3),
+(8, 3, 7, '28', '26', 3),
+(9, 4, 8, '22', '20', 3),
+(10, 1, 9, '27', '23', 3),
+(11, 8, 3, '23', '26', 4),
+(12, 5, 3, '27', '31', 2),
+(13, 5, 6, '28', '25', 4),
+(14, 1, 2, '21', '30', 4),
+(15, 9, 4, '16', '33', 4),
+(16, 2, 5, '38', '21', 5),
+(17, 3, 9, '20', 'FO', 5),
+(18, 6, 7, '21', '21', 5),
+(19, 8, 6, '22', '32', 6),
+(20, 7, 5, '17', '32', 6),
+(21, 4, 2, '21', '29', 6),
+(22, 1, 3, '21', '21', 6),
+(23, 2, 7, '37', '19', 7),
+(24, 3, 4, '20', '25', 7),
+(25, 5, 8, '34', '19', 7),
+(26, 6, 9, '39', '15', 7),
+(27, 1, 7, '24', '15', 2),
+(28, 2, 9, '30', '15', 1);
 
 --
 -- Index pour les tables exportées
