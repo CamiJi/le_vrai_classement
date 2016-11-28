@@ -297,14 +297,29 @@ class DefaultController extends Controller
 			$Journee = $value['Journee'];
 
 			$listeRencontresParJournee[$Journee][$id] = $value;
-
-
 			// echo $journee;
-
 		}	
+
+
+
+		//Calcul du classement de la meilleure attaque et du classement de la meilleure défense
+		//On récupère la variable classement et on calcul pour chaque équipe le nb de but+ et - divisé par le nb de matchs jouées MJ
+
+		foreach ($classement as $key => $value) {
+			$classementAtt[$key] = round($value['Buts+']/$value['MJ'], 2);
+			$classementDef[$key] = round($value['Buts-']/$value['MJ'], 2);
+
+		}
+
+		arsort($classementAtt);
+		asort($classementDef);
+
+
 
 		// On réaffiche notre page home en lui envoyant les données  des equipes choisit au hasard
 		$this->show('default/home',['classementEquipes'    => $classement,
+									'classementAtt' => $classementAtt,
+									'classementDef' => $classementDef,
 									'rencontresParJournee' => $listeRencontresParJournee,
 									'rencontresEquipes'    => $rencontresEquipes]);
 

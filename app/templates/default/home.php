@@ -82,8 +82,8 @@
                 </tr>
               </thead>
 
-              <?php foreach ($match as $key => $value): ?>
               <tbody>
+              <?php foreach ($match as $key => $value): ?>
                   <tr<?php if($value['Nom_equipe_1'] == 'PARIS SPORT CLUB 5' || $value['Nom_equipe_2'] == 'PARIS SPORT CLUB 5'){ echo 'class="info"';} ?>>
                     <td><?php echo $value['Nom_equipe_1']; ?></td>
                     <td class="text-right"><?php echo $value['Score_equipe_1']; ?></td>
@@ -91,8 +91,8 @@
                     <td class="text-right"><?php echo $value['Nom_equipe_2']; ?></td>
                   </tr>
                
-              </tbody> 
               <?php endforeach; ?>
+              </tbody> 
                 
             </table>
 
@@ -103,6 +103,60 @@
   <?php endforeach; ?>
 </div>
 
+
+<div class="row">
+  <div class="col-md-6">
+    <div><h2>Meilleure attaque:</h2></div>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Equipe</th>
+            <th class="text-right">Buts+/matchs</th>
+          </tr>
+        </thead>
+          <tbody>
+            <?php $position = 1 ; ?>
+            <?php foreach ($classementAtt as $key => $value): ?>
+              <tr <?php if($key == 'PARIS SPORT CLUB 5'){ echo 'class="info"';} ?>>
+                <td class="text-left"><?php echo $position; ?></td>
+                <td><?php echo $key; ?></td>
+                <td class="text-right"><?php echo $value; ?></td>
+              </tr>
+              <?php $position++ ; ?> 
+            <?php endforeach; ?>
+          </tbody> 
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div><h2>Meilleure défense:</h2></div>
+
+    <div class="table-responsive">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Equipe</th>
+            <th class="text-right">Buts-/matchs</th>
+          </tr>
+        </thead>
+          <tbody>
+            <?php $position = 1 ; ?>
+            <?php foreach ($classementDef as $key => $value): ?>
+              <tr <?php if($key == 'PARIS SPORT CLUB 5'){ echo 'class="info"';} ?>>
+                <td class="text-left"><?php echo $position; ?></td>
+                <td><?php echo $key; ?></td>
+                <td class="text-right"><?php echo $value; ?></td>
+              </tr>
+              <?php $position++ ; ?> 
+            <?php endforeach; ?>         
+          </tbody> 
+      </table>
+    </div>    
+  </div>
+</div>
 
 
 
