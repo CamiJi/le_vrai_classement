@@ -23,7 +23,7 @@
 
 	   <?php foreach ($classementEquipes as $Equipe => $data): ?>
 
-	      <tr class="<?php if ($data['Pos'] == 1) { echo 'success';}elseif ($data['Pos'] == 9) {echo 'danger';} ?>">
+	      <tr class="<?php if ($data['Pos'] == 1) { echo 'success';}elseif ($data['Pos'] == 9) {echo 'danger';}elseif ($Equipe == 'PARIS SPORT CLUB 5') {echo 'info';} ?>">
          <td><?php echo $data['Pos']; ?></td>
           <td>                     
               (<?php echo $data['PosOfficiel']; ?>)   
@@ -84,7 +84,7 @@
 
               <?php foreach ($match as $key => $value): ?>
               <tbody>
-                  <tr>
+                  <tr<?php if($value['Nom_equipe_1'] == 'PARIS SPORT CLUB 5' || $value['Nom_equipe_2'] == 'PARIS SPORT CLUB 5'){ echo 'class="info"';} ?>>
                     <td><?php echo $value['Nom_equipe_1']; ?></td>
                     <td class="text-right"><?php echo $value['Score_equipe_1']; ?></td>
                     <td class="text-left"><?php echo $value['Score_equipe_2']; ?></td>
