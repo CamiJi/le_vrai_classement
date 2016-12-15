@@ -64,7 +64,7 @@
           </section>
 
         <!-- Panel pour donner le link du site de la FFH -->
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="siteFFHdiv">
           <div class="panel-body">
             <h3 class="panel-title"><a href="http://www.ff-handball.org/competitions/championnats-departementaux/75-comite-de-paris.html?tx_obladygesthand_pi1[competition_id]=4514&cHash=53dc111887ff438df08f948461e435f3" target="_blank">Le lien vers le classement officiel de la FFH</a></h3>
           </div>
