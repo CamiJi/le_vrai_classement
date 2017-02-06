@@ -28,6 +28,7 @@ class DefaultController extends Controller
 			$classement[$equipe['Nom']] = [
 										   'Pts' =>'0',
 										   'Pos' => '',
+										   'PosEgl' => '0',
 										   'MJ' => '0',										  
 										   'V' =>'0',
 										   'D' =>'0',
@@ -124,15 +125,187 @@ class DefaultController extends Controller
 
 		}
 
+
+
+
+		//================================================================================================
+		//UNDER CONSTRUCTION
+		//================================================================================================
+
+
+		//PARTIE DIFFERENCE PARTICULIERE
+		//Dans cette partie on cherche à savoir la différence particulière de points lors des cas d'égalité
+		//On crée un tableau contenant les points présent sur plus d'une équipe
+		$tableauPoints = [];
+		foreach ($classement as $key => $value) {
+			if (in_array($value['Pts'], $tableauPoints)) {
+				$tableauPointsEgalite[] = $value['Pts'];
+			}
+			else{
+				$tableauPoints[] = $value['Pts'];
+			}
+		}
+
+		//On refait un tableau contenant les équipes à égalité triées par leur nb de points
+		$tableauEquipesEgalite=[];
+		$compteur = 1;
+		foreach ($classement as $key => $value) {
+			if (in_array($value['Pts'], $tableauPointsEgalite)) {
+				$tableauEquipesEgalite[$value['Pts']][] = $key;
+				$compteur++;
+			}
+		}
+
+		//Si des cas d'égalité de points:
+		if (!empty($tableauEquipesEgalite)) {
+
+			foreach ($tableauEquipesEgalite as $nbPoints => $nomEquipesMC) {
+
+				$classementMC = [];
+				$unMatchJoue = false;
+
+				foreach ($nomEquipesMC as $cleEquipe => $equipe) {
+
+					$classementMC[$equipe] = [
+												   'Pts' =>'0',
+												   'Pos' => '',
+												   'PosEgl' => '',
+												   'MJ' => '0',										  
+												   'V' =>'0',
+												   'D' =>'0',
+												   'N' =>'0',
+												   'Diff' => '',
+												   'Buts+' =>'0',
+												   'Buts-' =>'0',
+												   'Officiel' => '',
+												   'PosOfficiel' => '',
+												   'PtsOfficiel' => ''];
+				}
+
+
+				foreach ($rencontresEquipes as $idRencontres => $rencontres) {
+
+					
+
+					$id = $rencontres['id'];
+					$Nom_equipe_1 = $rencontres['Nom_equipe_1'];
+					$Nom_equipe_2 = $rencontres['Nom_equipe_2'];
+					$Score_equipe_1 = $rencontres['Score_equipe_1'];
+					$Score_equipe_2 = $rencontres['Score_equipe_2'];
+
+					if ((in_array($Nom_equipe_1, $nomEquipesMC)) && (in_array($Nom_equipe_2, $nomEquipesMC))) {
+
+						$unMatchJoue = true;
+
+						$classementMC[$Nom_equipe_1]['MJ']++;
+						$classementMC[$Nom_equipe_2]['MJ']++;
+
+						$classementMC[$Nom_equipe_1]['Buts+'] += $Score_equipe_1;
+						$classementMC[$Nom_equipe_1]['Buts-'] += $Score_equipe_2;
+
+						$classementMC[$Nom_equipe_2]['Buts+'] += $Score_equipe_2;
+						$classementMC[$Nom_equipe_2]['Buts-'] += $Score_equipe_1;
+
+						//Gestion des forfaits FO
+						if ($Score_equipe_1 == 'FO') {
+								$classementMC[$Nom_equipe_1]['D']++;
+								$classementMC[$Nom_equipe_2]['V']++;
+
+								$classementMC[$Nom_equipe_2]['Pts'] += 3;
+						}
+						elseif ($Score_equipe_2 == 'FO') {
+								$classementMC[$Nom_equipe_1]['V']++;
+								$classementMC[$Nom_equipe_2]['D']++;
+
+								$classementMC[$Nom_equipe_1]['Pts'] += 3;
+						}
+						else{
+
+
+							if ($Score_equipe_1 == $Score_equipe_2) {
+
+								$classementMC[$Nom_equipe_1]['N']++;
+								$classementMC[$Nom_equipe_2]['N']++;
+
+								$classementMC[$Nom_equipe_1]['Pts'] += 2;
+								$classementMC[$Nom_equipe_2]['Pts'] += 2;
+
+							}
+							elseif ($Score_equipe_1 > $Score_equipe_2) {
+
+
+								$classementMC[$Nom_equipe_1]['V']++;
+								$classementMC[$Nom_equipe_2]['D']++;
+
+								$classementMC[$Nom_equipe_1]['Pts'] += 3;
+								$classementMC[$Nom_equipe_2]['Pts'] += 1;	
+
+								
+							}
+							elseif ($Score_equipe_1 < $Score_equipe_2) {
+
+								$classementMC[$Nom_equipe_1]['D']++;
+								$classementMC[$Nom_equipe_2]['V']++;
+
+								$classementMC[$Nom_equipe_1]['Pts'] += 1;
+								$classementMC[$Nom_equipe_2]['Pts'] += 3;	
+							}
+						}
+
+					}
+
+				}
+
+				
+				if ($unMatchJoue) {
+									
+					//Calcul de la différence de buts
+					foreach ($classementMC as $key => $value) {
+						$classementMC[$key]['Diff'] = $classementMC[$key]['Buts+'] - $classementMC[$key]['Buts-'];
+
+					}
+
+					//On trie selon le classement PTS puis DIFF
+					// Obtient une liste de colonnes
+					$PtsMC = [];
+					$DiffMC = [];
+					foreach ($classementMC as $key => $row) {
+					    $PtsMC[$key]  = $row['Pts'];
+					    $DiffMC[$key] = $row['Diff'];
+					}
+					array_multisort($PtsMC, SORT_DESC, $DiffMC, SORT_DESC, $classementMC);
+
+					$position = 1;
+					foreach ($classementMC as $key => $value) {
+						$classementMC[$key]['Pos'] = $position;
+						$classement[$key]['PosEgl'] = $position;
+						$position++;
+					}
+				}
+				
+			}
+		}
+
+
+
 		//On trie selon le classement PTS puis DIFF
 		// Obtient une liste de colonnes
 		foreach ($classement as $key => $row) {
-		    $Pts[$key]  = $row['Pts'];
-		    $Diff[$key] = $row['Diff'];
+			$Pts[$key]    = $row['Pts'];
+			$PosEgl[$key] = $row['PosEgl'];
+			$Diff[$key]   = $row['Diff'];
 		}
+
 		// Trie les données par volume décroissant, edition croissant
 		// Ajoute $classement en tant que dernier paramètre, pour trier par la clé commune
-		array_multisort($Pts, SORT_DESC, $Diff, SORT_DESC, $classement);
+		array_multisort($Pts, SORT_DESC,  $PosEgl, SORT_ASC, $Diff, SORT_DESC, $classement);
+
+
+
+		//=============================================================================================
+
+		//TODO => 
+				//6. On rèpete l'opération pour le classement officiel
 
 		//On set le champ Position (Pos)
 		$position = 1;
@@ -140,7 +313,7 @@ class DefaultController extends Controller
 			$classement[$key]['Pos'] = $position;
 			$position++;
 		}
-
+ 
 
 
 
@@ -324,4 +497,6 @@ class DefaultController extends Controller
 									'rencontresEquipes'    => $rencontresEquipes]);
 
 	}
+
+
 }
