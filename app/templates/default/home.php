@@ -48,12 +48,12 @@
 
 <div class="alert alert-success" role="alert">
 <h5><b>INFORMATIONS:</b></h5>
-  <p>* Modifications par rapport au classement officiel: </br>Les victoires et défaites administratives (20-PE) ne sont pas prises en compte, le vrai score de la rencontre y est substitué. </br>En revanche, les forfaits (20-FO) sont pris en compte de la même manière que sur le classement officiel. </p>
-  <p>** Ce vrai classement ne doit pas nous servir d'excuse pour ne pas faire renouveller notre licence dès juillet :)</p></br>
+  <p><i class="fa fa-star" aria-hidden="true"></i>  Modifications par rapport au classement officiel: </br>Les victoires et défaites administratives (20-PE) ne sont pas prises en compte, le vrai score de la rencontre y est substitué. </br>En revanche, les forfaits (20-FO) sont pris en compte de la même manière que sur le classement officiel. </p>
+  <p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>  Ce vrai classement ne doit pas nous servir d'excuse pour ne pas faire renouveller notre licence dès juillet :)</p></br>
 <h5><b>CONDITIONS DE CALCUL:</b></h5>
-  <p>Victoire = 3pts, Nul = 2pts, Défaites = 1pts, FO = 0pts, PE = 0pts</p>
-  <p>2ème critère : En cas d'égalité de points, ce sont les matchs particuliers entre les équipes concernés qui comptent.</p>
-  <p>3ème critère : Si l'égalité persiste c'est la différence générale de buts qui sert de 3ème critère.</p>
+  <p><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Victoire = 3pts, Nul = 2pts, Défaites = 1pts, FO = 0pts, PE = 0pts</p>
+  <p><i class="fa fa-check-circle-o" aria-hidden="true"></i>  2ème critère : En cas d'égalité de points, ce sont les matchs particuliers entre les équipes concernés qui comptent.</p>
+  <p><i class="fa fa-check-circle-o" aria-hidden="true"></i>  3ème critère : Si l'égalité persiste c'est la différence générale de buts qui sert de 3ème critère.</p>
 </div>
 
 
