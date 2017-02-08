@@ -1,5 +1,6 @@
 html, body {
-	font-family: Consolas, monaco, monospace;
+	/*font-family: Consolas, monaco, monospace;*/
+	font-family: 'Varela Round', sans-serif;
 	background-color: #272822;
 	color: #F8F8F2;
 }

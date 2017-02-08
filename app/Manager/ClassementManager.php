@@ -51,5 +51,24 @@ class ClassementManager extends \W\Manager\Manager
 	}
 
 
+	public function rencontresEquipesEgalite($nbPoints){
+
+		$sql = "SELECT rencontres.id, 
+					   equipes1.Nom AS Nom_equipe_1, 
+					   equipes2.Nom AS Nom_equipe_2, 
+					   rencontres.Score_equipe_1, 
+					   rencontres.Score_equipe_2, 
+					   rencontres.Journee 
+					   FROM ". $this->table." 
+					   LEFT JOIN (SELECT * FROM equipes)equipes1 ON equipes1.id = rencontres.Id_equipe_1 
+					   LEFT JOIN (SELECT * FROM equipes)equipes2 ON equipes2.id = rencontres.Id_equipe_2
+					   ORDER BY rencontres.Journee ASC";
+
+		$sth = $this->dbh->prepare($sql);
+		$sth->execute();
+
+		return $sth->fetchAll();
+	}
+
 
 }

@@ -1,8 +1,92 @@
 
 
 /* ==========================================================================
-   Author's custom styles
+   Style général : 
    ========================================================================== */
+
+html, body {
+	font-family: 'Roboto', "Helvetica", "Arial", sans-serif;
+	line-height: 1.8;
+	color: #555;
+	margin-top: 0.5em;
+}
+
+h2 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  color: #333;
+}
+
+
+
+
+/*============================================================================*/
+/*Classes : */
+/*============================================================================*/
+
+.bold{
+	font-weight: bold;
+	color: black;
+}
+
+.redPSC{
+	background-color: #dd0018 !important;
+}
+
+.panneaux{
+	margin-bottom: 1em !important;
+}
+
+
+/*============================================================================*/
+/*ID : */
+/*============================================================================*/
+#header {
+  background-color: white;
+  line-height: 1.5em;
+  text-align: center;
+  margin-bottom: 6em;
+}
+
+#header img {
+  display: inline-block;
+  vertical-align: top;
+  width: 80%;
+}
+
+#header h1 {
+  font-size: 2.5em;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+}
+
+#header p {
+  border: 1px solid #dd0018;
+  border-radius: 290486px;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  padding: 1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: none 200ms ease-out;
+  transition-property: color, background;
+}
+
+#header p:hover {
+  background: #dd0018;
+  color: black;
+}
+
+#divInfos{
+	margin-top: 2em;
+  	border: 1px solid #dd0018;
+}
+
+#attDefRow{
+	margin-bottom: 1em;
+}
 
 
 #siteFFHdiv{
@@ -10,6 +94,17 @@
 	color: #FFFFFF;
 }
 
+@media screen and (min-width: 600px) {
+	html, body {
+		margin-top: 4em;
+	}
+	#header img {
+ 		width: 25%;
+	}
+	#header h1 {
+  		font-size: 4.5em;
+  	}
+}
 
 
 

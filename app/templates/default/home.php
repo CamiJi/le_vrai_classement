@@ -23,7 +23,7 @@
 
 	   <?php foreach ($classementEquipes as $Equipe => $data): ?>
 
-	      <tr class="<?php if ($data['Pos'] == 1) { echo 'success';}elseif ($data['Pos'] == 9) {echo 'danger';}elseif ($Equipe == 'PARIS SPORT CLUB 5') {echo 'info';} ?>">
+	      <tr class="<?php if ($Equipe == 'PARIS SPORT CLUB 5') {echo 'bold redPSC';} ?>">
          <td><?php echo $data['Pos']; ?></td>
           <td>                     
               (<?php echo $data['PosOfficiel']; ?>)   
@@ -46,11 +46,11 @@
   </table>
 </div>
 
-<div class="alert alert-success" role="alert">
-<h5><b>INFORMATIONS:</b></h5>
+<div id="divInfos" class="alert" role="alert">
+  <h5><b><u>INFORMATIONS:</u></b></h5>
   <p><i class="fa fa-star" aria-hidden="true"></i>  Modifications par rapport au classement officiel: </br>Les victoires et défaites administratives (20-PE) ne sont pas prises en compte, le vrai score de la rencontre y est substitué. </br>En revanche, les forfaits (20-FO) sont pris en compte de la même manière que sur le classement officiel. </p>
   <p><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>  Ce vrai classement ne doit pas nous servir d'excuse pour ne pas faire renouveller notre licence dès juillet :)</p></br>
-<h5><b>CONDITIONS DE CALCUL:</b></h5>
+  <h5><b><u>CONDITIONS DE CALCUL:</u></b></h5>
   <p><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Victoire = 3pts, Nul = 2pts, Défaites = 1pts, FO = 0pts, PE = 0pts</p>
   <p><i class="fa fa-check-circle-o" aria-hidden="true"></i>  2ème critère : En cas d'égalité de points, ce sont les matchs particuliers entre les équipes concernés qui comptent.</p>
   <p><i class="fa fa-check-circle-o" aria-hidden="true"></i>  3ème critère : Si l'égalité persiste c'est la différence générale de buts qui sert de 3ème critère.</p>
@@ -66,7 +66,7 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
   <?php foreach ($rencontresParJournee as $journee => $match): ?>
-    <div class="panel panel-default">
+    <div class="panel panel-default panneaux">
       <div class="panel-heading" role="tab" id="heading<?php echo $journee;?>">
         <h4 class="panel-title">
           <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $journee;?>" aria-expanded="false" aria-controls="collapse<?php echo $journee;?>">
@@ -90,7 +90,7 @@
 
               <tbody>
               <?php foreach ($match as $key => $value): ?>
-                  <tr class="<?php if($value['Nom_equipe_1'] == 'PARIS SPORT CLUB 5' || $value['Nom_equipe_2'] == 'PARIS SPORT CLUB 5'){ echo 'info';} ?>">
+                  <tr class="<?php if($value['Nom_equipe_1'] == 'PARIS SPORT CLUB 5' || $value['Nom_equipe_2'] == 'PARIS SPORT CLUB 5'){ echo 'redPSC bold';} ?>">
                     <td><?php echo $value['Nom_equipe_1']; ?></td>
                     <td class="text-right"><?php echo $value['Score_equipe_1']; ?></td>
                     <td class="text-left"><?php echo $value['Score_equipe_2']; ?></td>
@@ -110,7 +110,7 @@
 </div>
 
 
-<div class="row">
+<div class="row" id="attDefRow">
   <div class="col-md-6">
     <div><h2>Meilleure attaque:</h2></div>
     <div class="table-responsive">
@@ -125,7 +125,7 @@
           <tbody>
             <?php $position = 1 ; ?>
             <?php foreach ($classementAtt as $key => $value): ?>
-              <tr <?php if($key == 'PARIS SPORT CLUB 5'){ echo 'class="info"';} ?>>
+              <tr <?php if($key == 'PARIS SPORT CLUB 5'){ echo 'class="redPSC bold"';} ?>>
                 <td class="text-left"><?php echo $position; ?></td>
                 <td><?php echo $key; ?></td>
                 <td class="text-right"><?php echo $value; ?></td>
@@ -151,7 +151,7 @@
           <tbody>
             <?php $position = 1 ; ?>
             <?php foreach ($classementDef as $key => $value): ?>
-              <tr <?php if($key == 'PARIS SPORT CLUB 5'){ echo 'class="info"';} ?>>
+              <tr <?php if($key == 'PARIS SPORT CLUB 5'){ echo 'class="redPSC bold"';} ?>>
                 <td class="text-left"><?php echo $position; ?></td>
                 <td><?php echo $key; ?></td>
                 <td class="text-right"><?php echo $value; ?></td>

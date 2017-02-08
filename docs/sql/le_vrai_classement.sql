@@ -1,23 +1,24 @@
+
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Lun 28 Novembre 2016 à 11:15
--- Version du serveur :  10.1.10-MariaDB
--- Version de PHP :  5.5.33
+-- Client: localhost
+-- Généré le: Jeu 02 Février 2017 à 10:57
+-- Version du serveur: 10.0.28-MariaDB
+-- Version de PHP: 5.2.17
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `le_vrai_classement`
+-- Base de données: `u221718894_lvrc`
 --
 
 -- --------------------------------------------------------
@@ -26,10 +27,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `equipes`
 --
 
-CREATE TABLE `equipes` (
-  `id` int(11) NOT NULL,
-  `Nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE IF NOT EXISTS `equipes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_2449BA1554231355` (`Nom`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `equipes`
@@ -52,11 +55,12 @@ INSERT INTO `equipes` (`id`, `Nom`) VALUES
 -- Structure de la table `pe`
 --
 
-CREATE TABLE `pe` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Id_match` int(11) NOT NULL,
-  `Pe` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Pe` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `pe`
@@ -72,14 +76,15 @@ INSERT INTO `pe` (`id`, `Id_match`, `Pe`) VALUES
 -- Structure de la table `rencontres`
 --
 
-CREATE TABLE `rencontres` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `rencontres` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Id_equipe_1` int(11) NOT NULL,
   `Id_equipe_2` int(11) NOT NULL,
   `Score_equipe_1` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Score_equipe_2` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Journee` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `Journee` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=46 ;
 
 --
 -- Contenu de la table `rencontres`
@@ -111,51 +116,25 @@ INSERT INTO `rencontres` (`id`, `Id_equipe_1`, `Id_equipe_2`, `Score_equipe_1`, 
 (24, 3, 4, '20', '25', 7),
 (25, 5, 8, '34', '19', 7),
 (26, 6, 9, '39', '15', 7),
-(27, 1, 7, '24', '15', 2),
-(28, 2, 9, '30', '15', 1);
+(27, 1, 7, '24', '15', 1),
+(28, 2, 9, '30', '15', 2),
+(29, 3, 2, '25', '25', 8),
+(30, 9, 5, '23', '39', 8),
+(31, 1, 6, '20', '26', 8),
+(37, 6, 3, '21', '24', 10),
+(33, 2, 8, '37', '18', 9),
+(34, 7, 9, '30', '23', 9),
+(35, 5, 1, '20', '19', 9),
+(36, 6, 4, '28', '24', 9),
+(38, 5, 4, '24', '23', 10),
+(39, 7, 1, '27', '28', 10),
+(40, 8, 9, '19', '22', 10),
+(41, 9, 2, '23', '40', 11),
+(42, 1, 8, '27', '20', 11),
+(43, 4, 7, '45', '9', 11),
+(44, 3, 5, '18', '28', 11),
+(45, 4, 1, '21', '25', 5);
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `equipes`
---
-ALTER TABLE `equipes`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_2449BA1554231355` (`Nom`);
-
---
--- Index pour la table `pe`
---
-ALTER TABLE `pe`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `rencontres`
---
-ALTER TABLE `rencontres`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `equipes`
---
-ALTER TABLE `equipes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT pour la table `pe`
---
-ALTER TABLE `pe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT pour la table `rencontres`
---
-ALTER TABLE `rencontres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

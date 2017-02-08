@@ -9,8 +9,10 @@
 
         <title>Le vrai classement du PSC5</title>
 
-        <meta name="description" content="Cette page contient le classement du championnat de handball niveau : Honneur Departementale +16 masculin - Comité de Paris. Elle a pour but de donner le classement sans prendre en compte les défaites et les victoires administratives, tout en comparant le résultat obtenu avec le classement officiel de la Fédération Française de Handball. De plus elle permet de visualiser le classement des attaques et des défenses. ">
+        <meta name="description" content="Le classement du championnat de handball : Honneur Departementale +16 masculin - Comité de Paris. Donne le classement sans prendre en compte les défaites et les victoires administratives, tout en comparant le résultat obtenu avec le classement officiel de la Fédération Française de Handball. De plus elle permet de visualiser le classement des attaques et des défenses. ">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="Language" content="fr">
+        <meta name="google-site-verification" content="LyD8sKxwD9FHgGrTjPw0KMyL746Lto2BVlqyt4KVAZg" />
         
         <!-- Chargement des favicons -->
         <link rel="apple-touch-icon" sizes="57x57" href="<?= $this->assetUrl('favicon/apple-icon-57x57.png') ?>">
@@ -36,28 +38,28 @@
         <link rel="apple-touch-icon" href="<?= $this->assetUrl('apple-touch-icon.png') ?>">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
         <link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
-
         <link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap-theme.min.css') ?>">
+
         <link rel="stylesheet" href="<?= $this->assetUrl('css/main.css') ?>">
+
 
         <script src="<?= $this->assetUrl('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') ?>"></script>
     </head>
-    <body style="margin-top: 30px;">
+    <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
 
       <div class="container">
-        <div class="jumbotron">
-          <header>
-            <h1><?= $this->e($title) ?></h1>
-            <blockquote>
-                <p><em><?= $this->e($subtitle) ?></em></p>
-            </blockquote>
-          </header>
-        </div>
+    <div id="header">
+        <img src="<?= $this->assetUrl('img/logo_PSC.jpg') ?>">          
+        <h1 class="bold"><?= $this->e($title) ?></h1>
+        <p><?= $this->e($subtitle) ?></p> 
+    </div>
+
 
           <section>
             <?= $this->section('main_content') ?>
@@ -78,14 +80,16 @@
         <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!-- Google Analytics -->
         <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-88844031-1', 'auto');
+          ga('send', 'pageview');
+
         </script>
     </body>
 </html>

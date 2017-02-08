@@ -510,6 +510,18 @@ class DefaultController extends Controller
 
 								$classementMCOfficiel[$Nom_equipe_1]['Pts'] += 3;
 						}
+						elseif($Score_equipe_1 == 'PE'){
+								$classementOfficiel[$Nom_equipe_1]['D']++;
+								$classementOfficiel[$Nom_equipe_2]['V']++;
+
+								$classementOfficiel[$Nom_equipe_2]['Pts'] += 3;
+						}
+						elseif($Score_equipe_2 == 'PE'){
+								$classementOfficiel[$Nom_equipe_1]['V']++;
+								$classementOfficiel[$Nom_equipe_2]['D']++;
+
+								$classementOfficiel[$Nom_equipe_1]['Pts'] += 3;
+						}
 						else{
 
 
