@@ -6,6 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="alternate" href="http://levraiclassement.16mb.com/public/" hreflang="fr-fr" />
 
         <title>Le vrai classement du PSC5</title>
 
@@ -49,7 +50,7 @@
     </head>
     <body>
         <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <p class="browserupgrade">Vous utilisez un navigateur <strong>trop ancien</strong>. SVP <a href="http://browsehappy.com/">utilisez un autre navigateur</a> pour améliorer votre navigation.</p>
         <![endif]-->
 
 
